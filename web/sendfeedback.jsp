@@ -299,6 +299,9 @@
         <!-- Login Form -->
         <form action="/feedback" method="post">
             <input type="text" id="description"  name="description" class="fadeIn second" placeholder="Description">
+            <% if (errors.containsKey("description")) {%>
+            <span><%= errors.get("description")%></span>
+            <%}%>
             <input type="submit" class="fadeIn fourth" value="Send FeedBack">
         </form>
 

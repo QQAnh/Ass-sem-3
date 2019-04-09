@@ -23,6 +23,10 @@ public class Feedback {
         this.description = des;
     }
 
+    public Feedback() {
+
+    }
+
 
     public int getId() {
         return id;
@@ -58,14 +62,14 @@ public class Feedback {
         if (this.errors ==null){
             this.errors = new HashMap<>();
         }
-        ArrayList<String> errorUser = this.errors.get("username");
+        ArrayList<String> errorUser = this.errors.get("description");
         if (errorUser == null){
             errorUser = new ArrayList<>();
         }
         if (this.description == null || this.description.length() == 0){
-            errorUser.add("Username is required");
+            errorUser.add("description is required");
         }else if (this.description.length()<2 || this.description.length()>30){
-            errorUser.add("username is length 2-30");
+            errorUser.add("description is length 2-30");
         }
         if (errorUser.size()>0 ){
             this.errors.put("username", errorUser);

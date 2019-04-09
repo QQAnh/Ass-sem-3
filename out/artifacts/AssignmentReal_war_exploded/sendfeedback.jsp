@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="entity.Feedback" %><%--
   Created by IntelliJ IDEA.
   User: Quynh_Anh
   Date: 4/8/19
@@ -6,6 +8,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%HashMap<String, ArrayList<String>> errors = (HashMap<String, ArrayList<String>>) request.getAttribute("errors");
+    if (errors == null) {
+        errors = new HashMap<>();
+    }
+    Feedback feedback = (Feedback) request.getAttribute("feedback");
+
+    if (feedback == null) {
+        feedback = new Feedback();
+    }%>
 <html>
 <head>
     <title>Send Feedback</title>
@@ -288,6 +299,9 @@
         <!-- Login Form -->
         <form action="/feedback" method="post">
             <input type="text" id="description"  name="description" class="fadeIn second" placeholder="Description">
+            <% if (errors.containsKey("description")) {%>
+            <span><%= errors.get("description")%></span>
+            <%}%>
             <input type="submit" class="fadeIn fourth" value="Send FeedBack">
         </form>
 
