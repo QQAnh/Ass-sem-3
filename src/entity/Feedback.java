@@ -72,7 +72,7 @@ public class Feedback {
             errorUser.add("description is length 2-30");
         }
         if (errorUser.size()>0 ){
-            this.errors.put("username", errorUser);
+            this.errors.put("description", errorUser);
         }
 
     }

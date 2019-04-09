@@ -294,7 +294,6 @@
 <div class="wrapper fadeInDown">
     <div id="formContent">
         <!-- Tabs Titles -->
-
         <!-- Icon -->
         <!-- Login Form -->
         <form action="/feedback" method="post">
