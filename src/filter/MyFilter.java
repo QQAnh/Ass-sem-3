@@ -23,16 +23,19 @@ public class MyFilter implements Filter {
         HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
         HttpSession session = httpServletRequest.getSession();
         String token = String.valueOf(session.getAttribute("username"));
-        Integer role = (Integer) session.getAttribute("role");
         AccountModel accountModel = new AccountModel();
          boolean check = accountModel.getAccountByUserName(token);
-        if ( token == null && token.length() == 0 && check == false) {
-            ((HttpServletResponse) servletResponse).sendRedirect("/login");
+        System.out.println("token " +token);
+        if ( token != "null" && token.length() != 0 && check == true) {
+
+            filterChain.doFilter(servletRequest, servletResponse);
+
 
         }
         else {
 //            httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED);
-            filterChain.doFilter(servletRequest, servletResponse);
+            ((HttpServletResponse) servletResponse).sendRedirect("/login");
+
 
         }
     }

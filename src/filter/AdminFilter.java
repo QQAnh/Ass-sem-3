@@ -18,25 +18,31 @@ public class AdminFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         System.out.println("Filtering.........");
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
+        HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
         HttpSession session = httpServletRequest.getSession();
         String token = String.valueOf(session.getAttribute("username"));
-        Integer role = (Integer) session.getAttribute("role");
-        System.out.println("role(adminfilter) : " +role);
-        System.out.println("token :" +token);
-
         AccountModel accountModel = new AccountModel();
+        boolean check = accountModel.getAccountByUserName(token);
+        System.out.println("token " +token);
+         Object id = session.getAttribute("role");
+        System.out.println(id);
+//        System.out.println(role);
+        if ( token != "null" && token.length() != 0 && check == true) {
+           if ( id=="1"){
+//            ((HttpServletResponse) servletResponse).sendRedirect("/admin");
+            filterChain.doFilter(servletRequest, servletResponse);
+           }else {
+            ((HttpServletResponse) servletResponse).sendRedirect("/index");
+           }
 
-        if (token == null && token.length() == 0 ) {
-            boolean check = accountModel.getAccountByUserName(token);
-            if (check == false){
-                ((HttpServletResponse) servletResponse).sendRedirect("login.jsp");
-            }
-        } else {
-            System.out.println("hihihihi");
-            if (role == 1 ) {
-                filterChain.doFilter(servletRequest, servletResponse);
-            }
         }
+        else {
+//            httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+            ((HttpServletResponse) servletResponse).sendRedirect("/login");
+
+
+        }
+
     }
 
     @Override
