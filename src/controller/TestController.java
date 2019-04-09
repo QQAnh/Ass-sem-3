@@ -26,18 +26,18 @@ public class TestController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String description = req.getParameter("description");
         Feedback feedback = new Feedback(description);
-//        if (!feedback.isValid()){
-//
-//            HashMap<String, ArrayList<String>> errors = account.getErrors();
-//
-//            req.setAttribute("account",account);
-//
-//            req.setAttribute("errors", errors);
-//
-//            req.getRequestDispatcher("register.jsp").forward(req,resp);
-//
-//            return;
-//        }
+        if (!feedback.isValid()){
+
+            HashMap<String, ArrayList<String>> errors = feedback.getErrors();
+
+            req.setAttribute("feedback",feedback);
+
+            req.setAttribute("errors", errors);
+
+            req.getRequestDispatcher("sendfeedback.jsp").forward(req,resp);
+
+            return;
+        }
         FeedbackModel feedbackModel = new FeedbackModel();
         feedbackModel.userSend(feedback);
         resp.sendRedirect("/index");
