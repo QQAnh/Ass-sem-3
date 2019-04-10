@@ -24,19 +24,13 @@ public class MyFilter implements Filter {
         HttpSession session = httpServletRequest.getSession();
         String token = String.valueOf(session.getAttribute("username"));
         AccountModel accountModel = new AccountModel();
-         boolean check = accountModel.getAccountByUserName(token);
-        System.out.println("token " +token);
-        if ( token != "null" && token.length() != 0 && check == true) {
-
+        boolean check = accountModel.getAccountByUserName(token);
+        System.out.println("token " + token);
+        if (token != "null" && token.length() != 0 && check == true) {
             filterChain.doFilter(servletRequest, servletResponse);
-
-
-        }
-        else {
+        } else {
 //            httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             ((HttpServletResponse) servletResponse).sendRedirect("/login");
-
-
         }
     }
 

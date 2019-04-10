@@ -22,7 +22,6 @@ public class AccountController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-//        int role = Integer.parseInt(req.getParameter("role"));
         Account account = new Account(username, password, 2);
 
         if (!account.isValid()) {

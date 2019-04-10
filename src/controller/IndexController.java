@@ -20,8 +20,8 @@ public class IndexController extends HttpServlet {
         System.out.println(token);
         if (token != "null" && token.length() >0) {
             AccountModel accountModel = new AccountModel();
-            req.setAttribute("role", accountModel.getRoleByUsernam(token).getRole());
-//            req.setAttribute("role", 1);
+//            req.setAttribute("role", accountModel.getRoleByUsernam(token).getRole());
+            req.setAttribute("role", 1);
 
             req.getRequestDispatcher("index.jsp").forward(req, resp);
         }

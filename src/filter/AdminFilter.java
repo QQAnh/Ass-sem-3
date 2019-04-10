@@ -22,25 +22,26 @@ public class AdminFilter implements Filter {
         HttpSession session = httpServletRequest.getSession();
         String token = String.valueOf(session.getAttribute("username"));
         AccountModel accountModel = new AccountModel();
-        boolean check = accountModel.getAccountByUserName(token);
-        System.out.println("token " +token);
-         Object id = session.getAttribute("role");
-        System.out.println(id);
-//        System.out.println(role);
-        if ( token != "null" && token.length() != 0 && check == true) {
-           if ( id=="1"){
-//            ((HttpServletResponse) servletResponse).sendRedirect("/admin");
-            filterChain.doFilter(servletRequest, servletResponse);
-           }else {
-            ((HttpServletResponse) servletResponse).sendRedirect("/index");
-           }
 
+        boolean check = accountModel.getAccountByUserName(token);
+        Object role = session.getAttribute("role");
+        String convertedToString = String.valueOf(role);
+        System.out.println("role :" +convertedToString);
+        if ( token != "null" && token.length() != 0 && check == true) {
+            if ( convertedToString == "1"){
+                System.out.println("step 1 ");
+                ((HttpServletResponse) servletResponse).sendRedirect("/index");
+
+            }else {
+                System.out.println("step 2 ");
+                filterChain.doFilter(servletRequest, servletResponse);
+
+
+            }
         }
         else {
 //            httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             ((HttpServletResponse) servletResponse).sendRedirect("/login");
-
-
         }
 
     }
