@@ -18,7 +18,7 @@ public class DeleteFeedback extends HttpServlet {
             int id = Integer.parseInt(idFromReq);
             new FeedbackModel().deleteFeedback(id);
 
-            resp.sendRedirect("/index");
+            resp.sendRedirect("/admin");
         }
 
     }

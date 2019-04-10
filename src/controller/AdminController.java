@@ -18,11 +18,19 @@ public class AdminController extends HttpServlet {
         req.setAttribute("data", feedbackModel.getAllFeedback());
         HttpSession session = req.getSession();
         String token = String.valueOf(session.getAttribute("username"));
-        System.out.println(accountModel.getRoleByUsernam(token).getRole());
-//        if (accountModel.getRoleByUsernam(token).getRole() ==1) {
-            req.setAttribute("role", accountModel.getRoleByUsernam(token).getRole());
-            req.getRequestDispatcher("admin.jsp").forward(req, resp);
-//        }
+        System.out.println(token);
+        if (token != "null") {
+            if (accountModel.getRoleByUsernam(token).getRole() == 1) {
+                req.setAttribute("role", accountModel.getRoleByUsernam(token).getRole());
+                req.getRequestDispatcher("admin.jsp").forward(req, resp);
+            } else {
+                resp.sendRedirect("/index");
+            }
+        }
+        else {
+            resp.sendRedirect("/login");
+        }
+
 
     }
 }

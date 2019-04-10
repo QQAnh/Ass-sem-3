@@ -116,7 +116,7 @@
                             <h4 class="card-title"><%= item.getDescription()%>
                             </h4>
                             <%if (role == 1) { %>
-                            <p class="btn btn-danger" href="/delete?id=<%=item.getId()%>">Xóa</p>
+                            <a class="btn btn-danger" href="/delete?id=<%=item.getId()%>">Xóa</a>
                             <% } %>
                         </div>
                     </div>
