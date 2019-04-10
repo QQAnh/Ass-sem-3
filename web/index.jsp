@@ -64,7 +64,6 @@
 <!-- Navigation -->
 <%
     List<Feedback> data = (List<Feedback>) request.getAttribute("data");
-    Integer role = (Integer) request.getAttribute("role");
     if (data == null) {
         data = new ArrayList<>();
     }

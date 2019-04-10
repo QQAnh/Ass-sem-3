@@ -40,6 +40,7 @@ public class FeedbackModel {
                 Feedback c = new Feedback(id, des);
                 feedbacks.add(c);
             }
+            System.out.println(feedbacks);
             System.out.println(preparedStatement);
             return feedbacks;
         } catch (SQLException e) {
