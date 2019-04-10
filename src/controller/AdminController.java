@@ -19,10 +19,10 @@ public class AdminController extends HttpServlet {
         HttpSession session = req.getSession();
         String token = String.valueOf(session.getAttribute("username"));
         System.out.println(accountModel.getRoleByUsernam(token).getRole());
-        if (accountModel.getRoleByUsernam(token).getRole() ==1) {
+//        if (accountModel.getRoleByUsernam(token).getRole() ==1) {
             req.setAttribute("role", accountModel.getRoleByUsernam(token).getRole());
             req.getRequestDispatcher("admin.jsp").forward(req, resp);
-        }
+//        }
 
     }
 }

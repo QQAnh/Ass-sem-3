@@ -30,11 +30,12 @@ public class AdminFilter implements Filter {
         if ( token != "null" && token.length() != 0 && check == true) {
             if ( convertedToString == "1"){
                 System.out.println("step 1 ");
+//                filterChain.doFilter(servletRequest, servletResponse);
                 ((HttpServletResponse) servletResponse).sendRedirect("/index");
 
             }else {
                 System.out.println("step 2 ");
-                filterChain.doFilter(servletRequest, servletResponse);
+                ((HttpServletResponse) servletResponse).sendRedirect("/admin");
 
 
             }
