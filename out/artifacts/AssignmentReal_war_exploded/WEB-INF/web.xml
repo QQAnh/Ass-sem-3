@@ -37,12 +37,12 @@
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>FeedBack</servlet-name>
-        <servlet-class>controller.TestController</servlet-class>
+        <servlet-name>Phone</servlet-name>
+        <servlet-class>controller.PhoneController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>FeedBack</servlet-name>
-        <url-pattern>/feedback</url-pattern>
+        <servlet-name>Phone</servlet-name>
+        <url-pattern>/phone</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>DeleteFeedBack</servlet-name>
@@ -60,14 +60,14 @@
         <servlet-name>Admin</servlet-name>
         <url-pattern>/admin</url-pattern>
     </servlet-mapping>
-    <filter>
-        <filter-name>MyFilter</filter-name>
-        <filter-class>filter.MyFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>MyFilter</filter-name>
-        <url-pattern>/feedback</url-pattern>
-    </filter-mapping>
+<!--    <filter>-->
+<!--        <filter-name>MyFilter</filter-name>-->
+<!--        <filter-class>filter.MyFilter</filter-class>-->
+<!--    </filter>-->
+<!--    <filter-mapping>-->
+<!--        <filter-name>MyFilter</filter-name>-->
+<!--        <url-pattern>/feedback</url-pattern>-->
+<!--    </filter-mapping>-->
     <!--<filter>-->
         <!--<filter-name>AdminFilter</filter-name>-->
         <!--<filter-class>filter.AdminFilter</filter-class>-->

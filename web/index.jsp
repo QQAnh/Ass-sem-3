@@ -1,6 +1,7 @@
 <%@ page import="entity.Feedback" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="entity.Phone" %><%--
   Created by IntelliJ IDEA.
   User: Quynh_Anh
   Date: 4/8/19
@@ -24,7 +25,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand text-white" href="#">FeedBack</a>
+        <a class="navbar-brand text-white" href="#">Phone</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
                 aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -63,7 +64,7 @@
 </nav>
 <!-- Navigation -->
 <%
-    List<Feedback> data = (List<Feedback>) request.getAttribute("data");
+    List<Phone> data = (List<Phone>) request.getAttribute("data");
     if (data == null) {
         data = new ArrayList<>();
     }
@@ -101,7 +102,7 @@
 <!-- Carousel Slider -->
 <ul class="carousel-inner">
     <%
-        for (Feedback item : data) {
+        for (Phone item : data) {
     %>
     <li class="media">
 
@@ -113,8 +114,9 @@
                         <img class="card-img-top" src="https://dummyimage.com/350x250/c7c7c7/000.png"
                              alt="Card image cap">
                         <div class="card-block p-3">
-                            <h4 class="card-title"><%= item.getDescription()%>
+                            <h4 class="card-title"><%= item.getName()%>
                             </h4>
+                            <p class="card-title"><%=item.getPrice()%></p>
                         </div>
                     </div>
                 </div>
